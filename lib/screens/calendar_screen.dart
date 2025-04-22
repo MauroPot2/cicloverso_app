@@ -47,6 +47,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
     return List.generate(count, (i) => now.add(Duration(days: i)));
   }
 
+  String formatOra(String ora) {
+    final parsed = DateFormat.Hms().parse(ora); // "14:30:00"
+    return DateFormat.Hm().format(parsed); // → "14:30"
+  }
+
   @override
   Widget build(BuildContext context) {
     if (loading) {
@@ -121,7 +126,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         ),
                         child: ListTile(
                           title: Text(
-                            '🕒 ${slot['ora_inizio']} - ${slot['ora_fine']}',
+                            '🕒 ${formatOra(slot['ora_inizio'])} - ${formatOra(slot['ora_fine'])}',
                           ),
                           trailing: ElevatedButton(
                             onPressed: () {

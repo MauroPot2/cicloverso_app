@@ -1,3 +1,4 @@
+import 'package:app_cicloverso/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'screens/home_navigation.dart';
@@ -16,7 +17,11 @@ class CicloVersoApp extends StatelessWidget {
     return MaterialApp(
       title: 'CicloVerso',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.green),
-      home: const HomeNavigation(),
+      home: const LoginScreen(),
+      routes: {
+        '/home': (context) => const HomeNavigation(),
+        '/login': (context) => const LoginScreen(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }
